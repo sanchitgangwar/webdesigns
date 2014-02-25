@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "AleoLight";
+	src: url('fonts/Aleo-Light.otf');
+}
+
+@font-face {
+	font-family: "AleoBold";
+	src: url('fonts/Aleo-Bold.otf');
+}
+
+@font-face {
+	font-family: "Aleo";
+	src: url('fonts/Aleo-Regular.otf');
+}
+
+@font-face {
+	font-family: "WebSymbols";
+	src: url('fonts/WebSymbols.otf');
+}

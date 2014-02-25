@@ -1,0 +1,346 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+input {
+	outline: none;
+}
+
+h1 {
+	font: 3em "AleoLight";
+	font-weight: bold;
+}
+
+h2 {
+	font: 2.5em "AleoLight";
+}
+
+h3 {
+	font: 2em "AleoLight";
+	font-weight: bold;
+}
+
+.container {
+	width: 1040px;
+	margin: 0 auto;
+}
+
+/* Header CSS */
+
+#header {
+	position: relative;
+	height: 70px;
+}
+
+#header-background {
+	width: 100%;
+	height: 70px;
+	background: url('../patterns/squairy_light.png');
+	position: absolute;
+}
+
+#header-shadow {
+	position: absolute;
+	width: 100%;
+	height: 70px;
+
+	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1) 0%, 
+										rgba(255, 255, 255, 0.1) 50%, 
+										rgba(0, 0, 0, 0.1) 51%, 
+										rgba(0, 0, 0, 0.05) 100%);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0%, 
+										rgba(255, 255, 255, 0.1) 50%, 
+										rgba(0, 0, 0, 0.1) 51%, 
+										rgba(0, 0, 0, 0.05) 100%);
+	box-shadow: inset 0px 10px 7px -7px #fff,
+				0px 2px 2px 0px #b7b7b7;
+
+}
+
+#header-content {
+	position: absolute;
+	width: 100%;
+	height: 70px;
+}
+
+#logo {
+	cursor: pointer;
+	float: left;
+	display: inline-block;
+	padding: 0px 20px;
+	background: rgba(255, 255, 255, 0.5);
+
+	box-shadow: inset 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
+
+	transition-property: all;
+	-moz-transition-property: all;
+	-webkit-transition-property: all;
+	-o-transition-property: all;
+
+	transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s;
+	-webkit-transition-duration: 0.2s;
+	-o-transition-duration: 0.2s;
+}
+
+
+#logo:active {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#logo img {
+	padding: 5px 0px;
+	height: 60px;
+}
+
+#menu {
+	float: left;
+	height: 70px;
+	display: inline-block;
+}
+
+#menu ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#menu ul li {
+	display: inline-block;
+	cursor: pointer;
+	height: 70px;
+	padding: 0px 20px;
+	font: 20px "AleoLight";
+	line-height: 70px;
+	border-right: 1px solid #ddd;
+	font-weight: bold;
+	color: #555;
+	text-shadow: 0px 0px 1px #fff;
+	margin-right: -7px;
+
+	box-shadow: inset 0px 0px 2px 0px #fff;
+
+	transition-property: background;
+	-moz-transition-property: background;
+	-webkit-transition-property: background;
+	-o-transition-property: background;
+
+	transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s;
+	-webkit-transition-duration: 0.2s;
+	-o-transition-duration: 0.2s;
+}
+
+#menu ul li:hover {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+#menu ul li:active {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#search {
+	float: right;
+	height: 70px;
+}
+
+#search-box {
+	border-radius: 10px;
+	border: 0px solid #666;
+	height: 30px;
+	margin: 20px 0px;
+	width: 150px;
+
+	padding-left: 35px;
+	background-color: #f8f8f8;
+	background: #f8f8f8 url('../images/search-icon.png') no-repeat left center;
+
+	box-shadow: inset 0px 4px 7px -4px #b7b7b7,
+				inset -3px 0px 3px -3px #b7b7b7;
+
+	transition-property: all;
+	-moz-transition-property: all;
+	-webkit-transition-property: all;
+	-o-transition-property: all;
+
+	transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+}
+
+#search-box:focus {
+	background-color: #f3f3f3;
+	width: 300px;
+}
+
+/* Body CSS */
+
+#body {
+	width: 1000px;
+	padding: 40px 20px 70px 20px;
+	position: relative;
+	background: url('../patterns/grey.png');
+	border-radius: 20px;
+	margin: 20px auto;
+
+	box-shadow: 0px 0px 3px 0px #b7b7b7;
+}
+
+/* Slider CSS */
+
+div#slider-wrapper {
+	width: 100%;
+	height: 300px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+div#slider {
+	position: relative;
+}
+
+div#slider .slider-content {
+	float: left;
+	width: 1000px;
+	height: 300px;
+	overflow: hidden;
+	/*text-align: center;*/
+}
+
+div#slider-controls {
+	margin: 0 auto;
+	width: 1000px;
+	position: absolute;
+	text-align: right;
+	z-index: 100;
+	right: 20px;
+	bottom:10px;
+}
+
+div#slider-controls img {
+	width: 10px;
+	margin: 0;
+}
+
+img.slider-control-button-selected {
+	display: none;
+}
+
+a, img, button {
+	border: none;
+	outline: none;
+}
+
+img::-moz-focus-inner, a::-moz-focus-inner, button::-moz-focus-inner {
+	border: 0;
+}
+
+
+/* Slider Content CSS */
+
+
+div#slide3 {
+	text-align: left;
+	background: url('../images/lorem-ipsum.png') no-repeat right top;
+}
+
+div#slide3 h2 {
+	display: block;
+	width: 50%;
+}
+
+div#slide2 {
+	background: url('../images/lorem-ipsum-large2.jpg') no-repeat left top;
+}
+
+div#slide2 h2,h3 {
+	margin-left: 20px;
+	display: block;
+	width: 80%;
+}
+
+div#slide1 canvas {
+	float: left;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+div#slide1 div {
+	text-align: right;
+	float: right;
+	display: inline-block;
+}
+
+p#slide1-title {
+	font: 2.5em "AleoLight";
+	font-weight: bold;
+}
+
+p#slide1-subtitle {
+	font: 1.5em "AleoLight";
+	margin-top: -15px;
+}
+
+
+/* Footer CSS */
+
+#footer {
+	width: 100%;
+	height: 250px;
+	position: relative;
+}
+
+#footer-background {
+	width: 100%;
+	height: 250px;
+	background: url('../patterns/squairy_light.png');
+	position: absolute;
+}
+
+#footer-shadow {
+	position: absolute;
+	width: 100%;
+	height: 250px;
+
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0px -2px 2px 0px #ddd;
+				/*inset 0px -20px 20px -20px #fff;*/
+}
+
+#footer-content {
+	position: absolute;
+	width: 1000px;
+	height: 230px;
+	margin: 0px auto;
+	margin-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+ul.vertical-nav-column {
+	display: block;
+	float: left;
+	list-style: none;
+	padding: 0px;
+	margin: 0px 40px 0px 0px;
+	font: 1em "AleoLight";
+}
+
+ul.vertical-nav-column li:first-child {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#footer-final {
+	width: 100%;
+	padding-top: 20px;
+}
+
+#footer-final p {
+	text-align: center;
+	font: 0.8em "AleoLight";
+}

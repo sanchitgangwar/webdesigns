@@ -1,0 +1,89 @@
+div#content-wrapper {
+	width: 100%;
+	display: block;
+}
+
+div.content-box {
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+	width: 320px;
+	height: 400px;
+	background-color: #f8f8f8;
+	border-radius: 20px;
+	position: relative;
+	overflow: hidden;
+
+	box-shadow: inset -3px 0px 7px -7px #b7b7b7,
+				inset 0px 3px 5px -5px #b7b7b7,
+				inset 0px -3px 5px -5px #b7b7b7;
+}
+
+div.content-box:last-child {
+	margin-right: 0px;
+}
+
+div.content-box-title {
+	width: 100%;
+	height: 70px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	
+	margin-left: 20px;
+	line-height: 70px;
+	font-family: "AleoLight";
+	font-size: 2em;
+	font-weight: bold;
+}
+
+div.content-box-content {
+	margin-left: 20px;
+	margin-right: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+div.content {
+	margin-bottom: 2px;
+	padding: 0px 10px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 15px;
+	box-shadow: inset 0px -1px 2px -2px #b7b7b7;
+}
+
+div.content-box#products {
+	background: #f8f8f8 url('../images/products-small.png') no-repeat right bottom;
+}
+
+div.content-box#news {
+	background: #f8f8f8 url('../images/news-small.png') no-repeat right bottom;
+}
+
+div.content-box#events {
+	background: #f8f8f8 url('../images/events-small.png') no-repeat right bottom;
+}
+
+p.content-title {
+	font: 1.2em "AleoLight";
+	/*font-weight: bold;*/
+	cursor: pointer;
+}
+
+p.content-subtitle {
+	font: 1em "AleoLight";
+	margin-top: -10px;
+}
+
+p.content-body {
+	font: 1em "AleoLight";
+	display: none;
+}
+
+p.content-control {
+	font: 1em "AleoLight";
+}
+
+div.clear {
+	clear: both;
+}

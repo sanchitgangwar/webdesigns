@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/nanoscroller.css"/>
+	<link rel="stylesheet" type="text/css" href="css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index3.css"/>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/blur.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nanoscroller.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".nano").nanoScroller();
+
+			$("#news").hover(function() {
+				// $("#news-shadow").fadeToggle();
+			})
+		});
+	</script>
+</head>
+<body>
+	<div class="container" id="header-container">
+		<div id="header">
+			<div id="logo">
+				<img src="images/logo-text.png"/>
+			</div>
+		</div>
+		
+		<div id="header-shadow">
+		</div>
+
+		<div id="menu-wrapper">
+			<div id="menu">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Partners</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>				
+			</div>
+		</div>
+	</div>
+
+
+	<div id="body">
+		<div class="container">
+			<div id="news-wrapper">
+				<div id="news-heading">
+					<div id="news-heading-bg">
+						<h1>News</h1>
+					</div>
+				</div>
+
+				<div id="news" class="nano">
+					<div class="content">
+						<ul>
+							<li>
+								<h2><a href="#">Formation of Carrier Advisory Group</a></h2>
+								
+								<p>Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.</p>
+							</li>
+
+							<li>
+								<h2><a href="#">Mozilla and partners prepare to launch ABCD</a></h2>
+								
+								<p>Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.</p>
+							</li>
+
+							<li>
+								<h2><a href="#">Stay social with everyone</a></h2>
+
+								<p>A new way to stay social. To be launched soon by ABCD.</p>
+							</li>
+
+							<li>
+								<h2><a href="#">Telecom Ministry and XYZ</a></h2>
+
+								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+							</li>
+						</ul>
+					</div>		
+
+					<div id="news-shadow"></div>
+				</div>
+			</div>
+
+
+			<div id="second-wrapper">
+				<div id="second-heading">
+					<div id="second-heading-bg">
+						<h1>Who are We?</h1>
+					</div>
+				</div>
+
+				<div id="second">
+					<div class="content">
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris. Maecenas placerat, nisl at consequat rhoncus, sem nunc gravida justo, quis eleifend arcu velit quis lacus. Morbi magna magna, tincidunt a, mattis non, imperdiet vitae, tellus. Sed odio est, auctor ac, sollicitudin in, consequat vitae, orci. Fusce id felis. Vivamus sollicitudin metus eget eros.</p>
+
+						<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In posuere felis nec tortor. Pellentesque faucibus. Ut accumsan ultricies elit. Maecenas at justo id velit placerat molestie. Donec dictum lectus non odio. Cras a ante vitae enim iaculis aliquam. Mauris nunc quam, venenatis nec, euismod sit amet, egestas placerat, est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras id elit. Integer quis urna. Ut ante enim, dapibus malesuada, fringilla eu, condimentum quis, tellus. Aenean porttitor eros vel dolor. Donec convallis pede venenatis nibh. Duis quam. Nam eget lacus. Aliquam erat volutpat. Quisque dignissim congue leo.</p>
+					</div>	
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+	</div>
+
+	<div class="container" id="footer-container">
+		<div id="footer">
+			<div id="vertical-nav">
+				<ul class="vertical-nav-column">
+					<li>About us</li>
+					<li class="links"><a href="#">ABCD at a Glance</a></li>
+					<li class="links"><a href="#">Our Commitments</a></li>
+					<li class="links"><a href="#">Company Leadership</a></li>
+					<li class="links"><a href="#">Company Governance</a></li>
+					<li class="links"><a href="#">Company History</a></li>
+					<li class="links"><a href="#">Our Locations</a></li>
+					<li class="links"><a href="#">Contact Us</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>Products</li>
+					<li class="links"><a href="#">Product Overview</a></li>
+					<li class="links"><a href="#">Brands</a></li>
+					<li class="links"><a href="#">Traits and Technologies</a></li>
+					<li class="links"><a href="#">Research and Development</a></li>
+					<li class="links"><a href="#">Product Safety</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>News and Views</li>
+					<li class="links"><a href="#">ABCD in the News</a></li>
+					<li class="links"><a href="#">Newsroom</a></li>
+					<li class="links"><a href="#">Issues and Answers</a></li>
+					<li class="links"><a href="#">Executive Speeches</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>Investors</li>
+					<li class="links"><a href="#">Corporate Profile</a></li>
+					<li class="links"><a href="#">Presentations and Reports</a></li>
+					<li class="links"><a href="#">SEC Filings</a></li>
+				</ul>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+
+		<div id="footer-shadow"></div>
+
+		<div id="final-footer">
+			<div id="small-logo">
+				<img src="images/logo-small.png"/>
+			</div>
+
+			<p>&copy; Copyright 2000-2013. All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
+</html>

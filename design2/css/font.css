@@ -1,0 +1,49 @@
+@font-face {
+	font-family: "AleoLight";
+	src: url('fonts/Aleo-Light.otf');
+}
+
+@font-face {
+	font-family: "AleoBold";
+	src: url('fonts/Aleo-Bold.otf');
+}
+
+@font-face {
+	font-family: "Aleo";
+	src: url('fonts/Aleo-Regular.otf');
+}
+
+@font-face {
+	font-family: "WebSymbols";
+	src: url('fonts/WebSymbols.otf');
+}
+
+@font-face {
+	font-family: "Engel";
+	src: url('fonts/engel.ttf');
+}
+
+@font-face {
+	font-family: "Cicle";
+	src: url('fonts/Cicle_Fina.ttf');
+}
+
+@font-face {
+	font-family: "MankSans";
+	src: url('fonts/MankSans.ttf');
+}
+
+@font-face {
+	font-family: "HelveticaLight1";
+	src: url('fonts/HelveticaNeueLTStd-Th.otf');
+}
+
+@font-face {
+	font-family: "HelveticaLight2";
+	src: url('fonts/HelveticaNeueLTStd-UltLt.otf');
+}
+
+@font-face {
+	font-family: "Marta";
+	src: url('fonts/Marta_Regular.otf');
+}

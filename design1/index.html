@@ -1,0 +1,378 @@
+<html>
+<head>
+	<title>Design #1</title>
+	
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/index1.css">
+	<link rel="stylesheet" href="css/contentBox.css">
+	<link rel="stylesheet" href="css/button.css">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/spiral.js"></script>
+
+	<script>
+		$(document).ready(function() {
+
+			/* Slider. */
+			if($("#slider").length) {
+
+				// Declare variables
+				var totalSlides = $("#slider > .slider-content").length;
+				var slideWidth = 1000;
+				var totalWidth = slideWidth * totalSlides;
+				var visibleImages = Math.round($("#slider-wrapper").width() / slideWidth);
+				var visibleWidth = visibleImages * slideWidth;
+				var stopPosition = (visibleWidth - totalWidth);
+				var currentPosition = 0;
+
+				$("#slider").width(totalWidth);
+
+				// Insert gallery controls
+				for (var i = 0; i < totalSlides; i++) {
+					$("#slider-controls").append("<a href='#' class='slider-control' id='" + i + "'><img class='slider-control-button' src='images/slider-control-button.png'/><img class='slider-control-button-selected' src='images/slider-control-button-selected.png'/></a>&nbsp;&nbsp;");	
+				};
+
+
+				$(".slider-control#0").children("img.slider-control-button").hide();
+				$(".slider-control#0").children("img.slider-control-button-selected").show();
+
+				$(".slider-control").click(function() {
+					var elementId = parseInt($(this).attr("id"));
+					$("img.slider-control-button-selected").hide();
+					$("img.slider-control-button").show();
+
+					$(".slider-control#" + elementId).children("img.slider-control-button").hide();
+					$(".slider-control#" + elementId).children("img.slider-control-button-selected").show();
+
+					if(elementId != currentPosition) {
+						var difference = elementId - currentPosition;
+						$("#slider").animate({ left: "-=" + (slideWidth * difference) + "px" }, 1000, 'easeInOutBack');
+						currentPosition = elementId;
+					}
+
+					return false;
+				});
+			}
+
+
+			/* Content Boxes. */
+			var oldHeight;
+			var selectedPosition = 0;
+			var oldPosition = 0;
+			var selectedBox = "";
+
+			$(".content-title").click(function() {
+				selectedBox = $(this).parents(".content-box").attr("id");
+				selectedPosition = $(this).parent().attr("id");
+
+				if(oldPosition != selectedPosition) {
+					var selector = $("div.content-box#" + selectedBox).find("div.content#" + oldPosition);
+					if($(selector).children(".content-body").is(":visible")) {
+						$(selector).animate({height: oldHeight + "px"}, 500, 'easeInOutBack');
+						setTimeout(function() { 
+								$(selector).children(".content-body").hide(); 
+								$(selector).css({backgroundColor: ""}); 
+							}, 500);
+					}
+				}
+
+
+				if(! $(this).siblings(".content-body").is(":visible")) {
+					oldHeight = $(this).parent().height();
+
+					var newPadding = -1 * oldHeight * selectedPosition;
+					
+					$(this).parent().css({height: oldHeight, backgroundColor: "#fff"});
+					$(this).siblings(".content-body").show();
+
+					var bodyHeight = $(this).siblings(".content-body").height() + 20;
+
+					if(selectedPosition != 0)
+						$(this).parent().parent().children(".content").animate({ top: newPadding + "px"}, 500, 'easeInOutBack');
+
+					$(this).parent().animate({height: '+=' + bodyHeight + "px"}, 500, 'easeInOutBack');
+				} else {
+					if(selectedPosition != 0) {
+						$(this).parent().parent().children(".content").animate({top: ""}, 500, 'easeInOutBack');
+					}
+					$(this).parent().animate({ height: oldHeight + "px"}, 500, 'easeInOutBack');
+
+					var selector = $(this).siblings(".content-body");
+					var interval = 1000;
+
+					if(selectedPosition == 0)
+						interval = 500;
+
+					setTimeout(function() { $(selector).hide(); $(selector).parent().css({backgroundColor: ""}); }, interval);
+				}
+
+				oldPosition = selectedPosition;
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header">
+		<div id="header-background">
+		</div>
+
+		<div id="header-shadow">
+		</div>
+
+		<div id="header-content">
+			<div class="container">
+				<div id="logo">
+					<img src="images/logo.png"/>
+				</div>
+				
+				<div id="menu">
+					<ul id="header-list">
+						<li>About Us</li>
+						<li>Products</li>
+						<li>Services</li>
+						<li>Partners</li>
+					</ul>
+				</div>
+				
+				<div id="search">
+					<input type="text" id="search-box"/>
+				</div>
+
+				<div class="clear">
+				</div>
+			</div>
+		</div>
+	</div>
+
+		
+	<div class="container">
+		<div id="body">
+			<div id="slider-wrapper">
+				<div id="slider">
+					<div class="slider-content" id="slide1">
+						<canvas id="spiral-canvas"></canvas>
+						<div>
+							<p id="slide1-title">Supports HTML Canvas</p>
+							<p id="slide1-subtitle">Infact the slider supports everything.</p>
+ 							<button class="button">See more demos</button>	
+						</div>
+
+						<div class="clear"></div>
+					</div>
+
+					<div class="slider-content" id="slide2">
+						<h2>Contrary to popular belief, Lorem Ipsum is not simply random text.</h2>
+						<h3>It has roots in a piece of classical Latin literature from 45 BC.</h3>
+					</div>
+
+					<div class="slider-content" id="slide3">
+						<h2>The industry's standard dummy text ever since the 1500s.</h2>
+
+						<div class="button-well"><button class="button">Find out more</button></div>
+					</div>
+				</div>
+
+				<div id="slider-controls">
+				</div>
+			</div>
+
+
+			<div id="content-wrapper">
+				<div class="content-box" id="products">
+					<div class="content-box-title">
+						Products
+					</div>
+
+					<div class="content-box-content">
+						<div class="content" id="0">
+							<p class="content-title">
+								Enterprise Servers
+							</p>
+
+							<p class="content-control">
+								
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+
+						<div class="content" id="1">
+							<p class="content-title">
+								Enterprise Support
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+
+						<div class="content" id="2">
+							<p class="content-title">
+								Engineering Services
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+
+						<div class="content" id="3">
+							<p class="content-title">
+								Consumer Services
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="content-box" id="news">
+					<div class="content-box-title">
+						News
+					</div>
+
+					<div class="content-box-content">
+						<div class="content" id="0">
+							<p class="content-title">
+								Formation of Carrier Advisory Group
+							</p>
+
+							<p class="content-control">
+								
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+
+						<div class="content" id="1">
+							<p class="content-title">
+								Mozilla and partners prepare to launch ABCD
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+
+						<div class="content" id="2">
+							<p class="content-title">
+								Stay social with everyone
+							</p>
+
+							<p class="content-body">
+								Ubuntu is the world's favourite free operating system, with more than 20 million people preferring it to commercial alternatives. From the desktop to the cloud, Ubuntu 13.04 is ready to deploy - our fastest and most visually polished release ever.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="content-box" id="events">
+					<div class="content-box-title">
+						Events
+					</div>
+
+					<div class="content-box-content">
+						<div class="content" id="0">
+							<p class="content-title">
+								Monsoon Webinar
+							</p>
+
+							<p class="content-subtitle">
+								3 August 2013 - www.website.org
+							</p>
+
+							<p class="content-control">
+								
+							</p>
+
+							<p class="content-body">
+							</p>
+						</div>
+
+						<div class="content" id="1">
+							<p class="content-title">
+								OSCON 2013
+							</p>
+
+							<p class="content-subtitle">
+								22-26 July 2013 - Portland, USA
+							</p>
+
+							<p class="content-body">
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer">
+		<div id="footer-background">
+		</div>
+
+		<div id="footer-shadow">
+		</div>
+
+		<div class="container">
+			<div id="footer-content">
+				<div id="vertical-nav">
+					<ul class="vertical-nav-column">
+						<li>About us</li>
+						<li>ABCD at a Glance</li>
+						<li>Our Commitments</li>
+						<li>Company Leadership</li>
+						<li>Company Governance</li>
+						<li>Company History</li>
+						<li>Our Locations</li>
+						<li>Contact Us</li>
+					</ul>
+
+					<ul class="vertical-nav-column">
+						<li>Products</li>
+						<li>Product Overview</li>
+						<li>Brands</li>
+						<li>Traits and Technologies</li>
+						<li>Research and Development</li>
+						<li>Product Safety</li>
+					</ul>
+
+					<ul class="vertical-nav-column">
+						<li>News and Views</li>
+						<li>ABCD in the News</li>
+						<li>Newsroom</li>
+						<li>Issues and Answers</li>
+						<li>Executive Speeches</li>
+					</ul>
+
+					<ul class="vertical-nav-column">
+						<li>Investors</li>
+						<li>Corporate Profile</li>
+						<li>Presentations and Reports</li>
+						<li>SEC Filings</li>
+					</ul>
+				</div>
+
+				<div class="clear">
+				</div>
+
+				<div id="footer-final">
+					<p>&copy; 2000-2013 Sample Company - All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<html>
+<head>
+	<title>Design #2</title>
+
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/index2.css">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/jquery.animate-colors-min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+
+			// Gallery
+			if($("#gallery").length) {
+
+				// Variable for automatic sliding
+				var slideTimer;
+				var slideInterval = 10000;
+
+				var totalImages = $("#gallery > li").length;
+				var imageWidth = $("#gallery > li:first").outerWidth(true);
+				var totalWidth = imageWidth * totalImages;
+				var visibleImages = Math.round($("#gallery-wrap").width() / imageWidth);
+				var visibleWidth = visibleImages * imageWidth;
+				var stopPosition = (visibleWidth - totalWidth);
+				var currentPosition = 0;
+
+				$("#gallery").width(totalWidth);
+
+				var indexBg = ["#ae1075", "#ae4810", "#9aae10"];
+				var indexFg = ["#fff", "#fff", "#fff"];
+
+				$("#gallery-index").animate({backgroundColor: indexBg[currentPosition], color: indexFg[currentPosition]}, 1);
+				$("#gallery-index").fadeIn(1000);
+				$("#gallery-index li#0").animate({fontSize: "2em"}, 1000);
+				$("#gallery-text li#0").slideToggle(1000);
+				$("#gallery-text").css({color: indexBg[currentPosition]});
+
+				$("#bg0").fadeIn(1000);
+				$(".theme-text").css({color: indexBg[currentPosition]});
+				$(".theme-color").animate({backgroundColor: indexBg[currentPosition]}, 1000);
+
+				function startTimer(currentPosition, totalPositions, interval) {
+					var slideTimer = window.setInterval(function() {
+						if(currentPosition >= totalPositions)
+							currentPosition = -1;
+
+						$("#gallery-index li#" + (++currentPosition)).click();
+					}, interval);
+
+					return slideTimer;
+				}
+
+				slideTimer = startTimer(0, 3, slideInterval);
+
+				$("#gallery-index li").click(function() {
+					clearInterval(slideTimer);
+					var elementId = parseInt($(this).attr("id"));
+
+					if(elementId != currentPosition) {
+						var difference = elementId - currentPosition;
+						$("#gallery").animate({ left: "-=" + (imageWidth * difference) + "px" }, 1000, 'easeOutCubic');
+
+						$("#bg" + currentPosition).fadeOut(100);
+						$("#bg" + elementId).fadeIn(1000);
+
+						$("#gallery-index").animate({backgroundColor: indexBg[elementId], color: indexFg[elementId]}, 1000);
+						$("#gallery-index li#" + currentPosition).animate({fontSize: "1.5em"}, 1000, 'easeOutCubic');
+						$(this).animate({fontSize: "2em"}, 1000, 'easeOutCubic');
+
+						$(".theme-text").animate({color: indexBg[elementId]}, 1000);
+
+						$("#gallery-text li").fadeOut(100);
+						window.setTimeout(function() {
+							$("#gallery-text li#" + elementId).slideToggle(1000);
+							$("#gallery-text").animate({color: indexBg[elementId]}, 1000);
+							$(".theme-color").animate({backgroundColor: indexBg[elementId]}, 1000);
+						}, 100);
+
+						currentPosition = elementId;
+					}
+
+					slideTimer = startTimer(currentPosition, 3, slideInterval);
+					return false;
+				});
+			}
+
+
+			// Menu
+
+			var lastItem = -1;
+			$(".menu-item").click(function() {
+
+				var selector;
+				if(lastItem != -1) {
+					selector = $(this).siblings(".menu-item#" + lastItem);
+					$(selector).children(".menu-content").hide();
+					$(selector).css({backgroundColor: ""});
+				}
+
+				selector = $(this).children(".menu-content");
+				if($(selector).is(":visible")) {
+					lastItem = -1;
+					$(this).css({backgroundColor: ""});
+				} else
+					$(this).animate({backgroundColor: "rgba(255, 255, 255, 0.2)"}, 200);
+
+				$(this).children(".menu-content").slideToggle(500);
+
+				lastItem = parseInt($(this).attr("id"));
+			});
+
+		});
+
+	</script>
+</head>
+
+<body>
+	
+	<div id="header">
+		<div class="container">
+			<div id="logo">
+				<a href="#"><img src="images/logo-text.png"/></a>
+			</div>
+
+			<div id="menu" class="theme-color">
+				<ul>
+					<li class="menu-item" id="0">
+						Products <img class="down-arrow" src="images/down-arrow.png">
+						<div class="menu-content products-menu" id="0">
+							<div class="vertical-div">
+								<h3>Enterprise Servers</h3>
+								<ul>
+									<li>Server Type 1</li>
+									<li>Server Type 2</li>
+									<li>Server Type 3</li>
+									<li>Server Type 4</li>
+								</ul>
+							</div>
+							
+							<div class="vertical-div">
+								<h3>Agricultural Equipment</h3>
+								<ul>
+									<li>Equipment 1</li>
+									<li>Equipment 2</li>
+									<li>Equipment 3</li>
+									<li>Equipment 4</li>
+									<li>Equipment 5</li>
+								</ul>
+							</div>
+
+							<div class="vertical-div">
+								<h3>Security Products</h3>
+								<ul class="menu-content-sublist">
+									<li>Antivirus</li>
+									<li>Theft Protection</li>
+									<li>Internet Protection</li>
+								</ul>
+							</div>
+
+							<div class="vertical-div">
+								<h3>Lemon Series</h3>
+								<ul class="menu-content-sublist">
+									<li>Lemon 9</li>
+									<li>Lemon 8</li>
+									<li>Lemon 7</li>
+									<li>Lemon 1.1</li>
+								</ul>
+							</div>
+
+							<div class="clear"></div>
+						</div>
+					</li>
+
+					<li class="menu-item" id="1">
+						Downloads <img class="down-arrow" src="images/down-arrow.png">
+						<div class="menu-content" id="1">
+							<ul id="downloads-menu">
+								<li>
+									<h3>Annual Reports</h3>
+									<ul class="menu-content-sublist">
+										<li>2013</li>
+										<li>2012</li>
+										<li>2011</li>
+										<li>2010</li>
+									</ul>
+								</li>
+								<li>
+									<h3>Semi-annual Reports</h3>
+									<ul class="menu-content-sublist">
+										<li>Jan-June 2013</li>
+										<li>July-Dec 2012</li>
+										<li>Jan-June 2012</li>
+										<li>July-Dec 2011</li>
+									</ul>
+								</li>
+								
+								<li>
+									<h3>Quarterly Reports</h3>
+									<ul class="menu-content-sublist">
+										<li>April-June 2013</li>
+										<li>Jan-March 2013</li>
+										<li>Oct-Dec 2012</li>
+										<li>July-Sep 2012</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="menu-item" id="2">
+						Partners <img class="down-arrow" src="images/down-arrow.png">
+						<div class="menu-content" id="2">
+							<ul id="partners-menu">
+								<li>
+									<h3>LIO Private Limited</h3>
+									<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+									
+								</li>
+								
+								<li>
+									<h3>ANDY Inc.</h3>
+									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or.</p>
+								</li>
+								<li></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+
+
+	<div id="body-bg">
+		<div id="bg0"></div>
+		<div id="bg1"></div>
+		<div id="bg2"></div>
+	</div>
+
+	<div id="gallery-wrap">
+		<div id="gallery-index">
+			<ul>
+				<li id="0">Introducing Lemon 9</li>
+				<li id="1">What did John do?</li>
+				<li id="2">Advertisement and Media</li>
+			</ul>
+		</div>
+
+		<ul id="gallery">
+			<li><img src="images/image2.jpg" alt="" id="0"></li>
+			<li><img src="images/image1.jpg" alt="" id="1"></li>
+			<li><img src="images/image3.jpg" alt="" id="2"></li>
+		</ul>
+
+		<div id="gallery-text">
+			<ul>
+				<li id="0">Lemon 9 brings to table amazing capabilities.</li>
+				<li id="1">What did he do? That's what we're trying to find out.</li>
+				<li id="2">Yes, we do advertise and we are the media.</li>
+			</ul>
+		</div>
+	</div>
+		
+	<div class="container" id="body">
+
+		<div id="about">
+			<p class="content-box-title">About Us</p>
+
+			<p class="theme-text" id="about-text">Agriculture crop dynamics are influenced by multiple factors such as the type of the crop, location, and weather. To improve agriculture productivity, farmers need integrated agricultural advice that consists of advice for crop protection and production problems, and appropriate risk mitigation steps based on the expected (normal and deviated) weather pattern.
+			</p>
+			
+			<a href="#" class="styled"><span id="read-more-about">read more..</span></a>
+		</div>
+
+		<div id="social-links" class="theme-color">
+			<p class="content-box-title" style="color: #fff">Social</p>
+
+			<p class="social-link"><a class="social" href="#">f</a></p>
+			<p class="social-link"><a class="social" href="#">g</a></p>
+			<p class="social-link"><a class="social" href="#">t</a></p>
+			<p class="social-link"><a class="social" href="#">y</a></p>
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="content-box" id="news">
+			<p class="content-box-title">News</p>
+			<ul>
+				<li><p class="theme-text"><a class="styled" href="#">Formation of Carrier Advisory Group</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Mozilla and partners prepare to launch ABCD</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Stay social with everyone</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Lemon 9 to be launched in second quarter of 2014.</a></p></li>
+			</ul>
+		</div>
+
+		<div class="content-box" id="products">
+			<p class="content-box-title">Products</p>
+			<ul>
+				<li><p class="theme-text"><a class="styled" href="#">Enterprise Servers</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Agricultural Equipment</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Security Products</a></p></li>
+				<li><p class="theme-text"><a class="styled" href="#">Lemon 9</a></p></li>
+			</ul>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	
+	<div id="lowerLinks" class="theme-color">
+		<div class="container">
+			<div id="vertical-nav">
+				<ul class="vertical-nav-column">
+					<li>About us</li>
+					<li><a href="#" class="footerLinks">ABCD at a Glance</a></li>
+					<li><a href="#" class="footerLinks">Our Commitments</a></li>
+					<li><a href="#" class="footerLinks">Company Leadership</a></li>
+					<li><a href="#" class="footerLinks">Company Governance</a></li>
+					<li><a href="#" class="footerLinks">Company History</a></li>
+					<li><a href="#" class="footerLinks">Our Locations</a></li>
+					<li><a href="#" class="footerLinks">Contact Us</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>Products</li>
+					<li><a href="#" class="footerLinks">Product Overview</a></li>
+					<li><a href="#" class="footerLinks">Brands</a></li>
+					<li><a href="#" class="footerLinks">Traits and Technologies</a></li>
+					<li><a href="#" class="footerLinks">Research and Development</a></li>
+					<li><a href="#" class="footerLinks">Product Safety</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>News and Views</li>
+					<li><a href="#" class="footerLinks">ABCD in the News</a></li>
+					<li><a href="#" class="footerLinks">Newsroom</a></li>
+					<li><a href="#" class="footerLinks">Issues and Answers</a></li>
+					<li><a href="#" class="footerLinks">Executive Speeches</a></li>
+				</ul>
+
+				<ul class="vertical-nav-column">
+					<li>Investors</li>
+					<li><a href="#" class="footerLinks">Corporate Profile</a></li>
+					<li><a href="#" class="footerLinks">Presentations and Reports</a></li>
+					<li><a href="#" class="footerLinks">SEC Filings</a></li>
+				</ul>
+			</div>
+
+			<div class="clear">
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<p id="footer-text">
+				&copy; Copyright 2000-2013 Sample Company - All Rights Reserved. <br/>
+				All trademarks used are the properties of the respective owners.
+			</p>
+
+			<img src="images/logo-text-small.png" id="footer-img"/>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
